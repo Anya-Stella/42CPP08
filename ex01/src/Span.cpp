@@ -1,6 +1,5 @@
 #include "../include/Span.hpp"
 #include <algorithm>
-#include <exception>
 #include <climits>
 
 Span::Span(unsigned int	n) : _cap(n), _v() { _v.reserve(n); }

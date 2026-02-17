@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <exception>
 
 class Span
 {
@@ -18,6 +19,14 @@ public:
 	void	addNumber(int X);
 	int		shortestSpan() const;
 	int		longestSpan() const;
+	template<typename It>
+	void	addRange(It first, It last)
+	{
+		std::vector<int> tmp(first, last);
+		if (_v.size() + tmp.size() > _cap) throw FullException();
+
+		_v.insert(_v.end(), tmp.begin(), tmp.end());
+	}
 
 	/* exception */
 	class FullException : public std::exception
