@@ -1,15 +1,26 @@
-
+#pragma once
+#include <vector>
 
 class Span
 {
 private:
-	unsigned int N;
-
-	/* default */
-	Span(int N);
-	Span(Span &another);
-
+	unsigned int		_cap;
+	std::vector<int>	_v;
 
 public:
-	void addNumber();
+	/* default */
+	Span(unsigned int n);
+	Span(const Span &other);
+	Span &operator=(const Span &rhs);
+	~Span();
+
+	/* using */
+	void	addNumber(int X);
+
+	/* exception */
+	class FullException : public std::exception
+	{
+	public:
+		const char* what() const throw() { return "Span: Full"; }
+	};
 };
