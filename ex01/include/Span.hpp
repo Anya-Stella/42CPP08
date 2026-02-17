@@ -16,11 +16,18 @@ public:
 
 	/* using */
 	void	addNumber(int X);
+	int		shortestSpan() const;
+	int		longestSpan() const;
 
 	/* exception */
 	class FullException : public std::exception
 	{
 	public:
 		const char* what() const throw() { return "Span: Full"; }
+	};
+	class NoSpanException : public std::exception
+	{
+	public:
+		const char* what() const throw() { return "Span: Not enough elements"; }
 	};
 };
